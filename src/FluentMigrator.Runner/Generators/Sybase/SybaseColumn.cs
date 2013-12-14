@@ -37,5 +37,10 @@ namespace FluentMigrator.Runner.Generators.Sybase
             }
             return null;
         }
+
+        public string FormattedDefault(string column, object defaultValue) {
+            return FormatDefaultValue(new ColumnDefinition { Name = column, DefaultValue = defaultValue});
+        }
+
     }
 }

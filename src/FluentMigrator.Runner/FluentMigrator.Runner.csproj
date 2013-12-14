@@ -149,6 +149,8 @@
     <Compile Include="Generators\Oracle\OracleQuoter.cs" />
     <Compile Include="Generators\SqlServer\SqlServer2005DescriptionGenerator.cs" />
     <Compile Include="Generators\SqlServer\SqlServer2012Generator.cs" />
+    <Compile Include="Generators\Sybase\SybaseColumn.cs" />
+    <Compile Include="Generators\Sybase\SybaseGenerator.cs" />
     <Compile Include="Generators\Sybase\SybaseTypeMap.cs" />
     <Compile Include="Helpers\FormatHelper.cs" />
     <Compile Include="IMigrationInformationLoader.cs" />
