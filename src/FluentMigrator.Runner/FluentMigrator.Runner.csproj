@@ -259,6 +259,9 @@
     <Compile Include="Processors\ProcessorBase.cs" />
     <Compile Include="Processors\Sqlite\SqliteProcessor.cs" />
     <Compile Include="Processors\SqlServer\SqlServerProcessor.cs" />
+    <Compile Include="Processors\Sybase\SybaseDbFactory.cs" />
+    <Compile Include="Processors\Sybase\SybaseProcessor.cs" />
+    <Compile Include="Processors\Sybase\SybaseProcessorFactory.cs" />
     <Compile Include="ProfileLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StopWatch.cs" />
