@@ -19,8 +19,8 @@ namespace FluentMigrator.Runner.Processors.Sybase {
         }
 
         public override bool TableExists(string schemaName, string tableName) {
-            return Exists("select count(*) from systable t inner join sysuserperm u on u.user_id = t.creator where table_name = '{0}' and table_type = 'base' and u.user_name = '{1}'",
-                Escape(tableName), Escape(schemaName));
+            return Exists("select count(*) from systable t inner join sysuserperm u on u.user_id = t.creator where table_name = '{0}' and table_type = 'base'",
+                Escape(tableName));
         }
 
         private string Escape(string identifier) {
@@ -31,24 +31,24 @@ namespace FluentMigrator.Runner.Processors.Sybase {
             return Exists(@"select count(*) from systable t 
                             inner join sysuserperm u on u.user_id = t.creator 
                             inner join syscolumn c on c.table_id = t.table_id
-                            where table_name = '{0}' and table_type = 'base' and u.user_name = '{1}' and c.column_name = '{2}'",
-                Escape(tableName), Escape(schemaName), Escape(columnName));
+                            where table_name = '{0}' and table_type = 'base' and c.column_name = '{1}'",
+                Escape(tableName), Escape(columnName));
         }
 
         public override bool ConstraintExists(string schemaName, string tableName, string constraintName) {
             return Exists(@"select * from sysconstraint c
                             inner join systable t on t.table_id = c.table_id
                             inner join sysuserperm u on u.user_id = t.creator
-                            where t.table_name = '{0}' and constraint_name = '{1}' and u.user_name = '{2}'",
-                Escape(tableName), Escape(constraintName), Escape(schemaName));
+                            where t.table_name = '{0}' and constraint_name = '{1}'",
+                Escape(tableName), Escape(constraintName));
         }
 
         public override bool IndexExists(string schemaName, string tableName, string indexName) {
             return Exists(@"select * from sysindex i
                             inner join systable t on t.table_id = i.table_id
                             inner join sysuserperm u on u.user_id = t.creator
-                            where t.table_name = '{0}' and index_name = '{1}' and u.user_name = '{2}'",
-                Escape(tableName), Escape(indexName), Escape(schemaName));                                                                                                      
+                            where t.table_name = '{0}' and index_name = '{1}'",
+                Escape(tableName), Escape(indexName));                                                                                                      
         }
 
         public override bool SequenceExists(string schemaName, string sequenceName) {
@@ -83,10 +83,9 @@ namespace FluentMigrator.Runner.Processors.Sybase {
                             inner join systable t on t.table_id = c.table_id
                             inner join sysuserperm u on u.user_id = t.creator
                             where c.[default] is not null and t.table_name = '{0}'
-                                and u.user_name = '{1}'
-                                and c.Column_name = '{2}'
-                                and c.[default] like '%{3}%'",
-                Escape(tableName), Escape(schemaName), Escape(columnName), Escape(defaultValue.ToString()));
+                                and c.Column_name = '{1}'
+                                and c.[default] like '%{2}%'",
+                Escape(tableName), Escape(columnName), Escape(defaultValue.ToString()));
         }
 
         public override void Process(PerformDBOperationExpression expression) {

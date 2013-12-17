@@ -10,7 +10,7 @@ namespace FluentMigrator.Runner.Generators.Sybase
 {
     public class SybaseGenerator : GenericGenerator
     {
-        public SybaseGenerator() : base(new SybaseColumn(), new GenericQuoter(), new EmptyDescriptionGenerator())
+        public SybaseGenerator() : base(new SybaseColumn(), new SybaseQuoter(), new EmptyDescriptionGenerator())
         {
         }
 
